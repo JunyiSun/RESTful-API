@@ -1,0 +1,86 @@
+<!Doctype html>
+<head>
+	<h1> Web Tool </h1>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js""></script>  -->
+	<script type="text/javascript" src="./jquery.min.js"></script> 
+</head>
+<body>
+<button id="allTweets"> All Tweets </button>
+<button id="allUsers"> All Users</button>
+<button id="allLinks"> All Links</button>
+
+	<form id="tweetForm">
+		  Tweet: <input type="text" name="specTweet" id="specTweet">
+		  <input type="submit" value="Get tweet by tweetId">
+	</form>
+
+	<form id="userForm">
+		  Tweet: <input type="text" name="specUser" id="specUser">
+		  <input type="submit" value="Get User by ScreenName">
+	</form>
+	<form id="userTweetForm">
+		  Tweet: <input type="text" name="specUserTweet" id="specUserTweet">
+		  <input type="submit" value="Get User's Tweets by ScreenName">
+	</form>
+	<p> Results appears here
+	<div id="outputBox">
+
+	</div>
+	</p>
+<script type="text/javascript">
+$('#allTweets').click(function() {
+	$.getJSON("tweets/", function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+});
+$('#userForm').submit(function() {
+	event.preventDefault(); // prevent default redirections
+	var value = $("input#specUser").val();
+	$.getJSON("users/" + value, function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+
+});
+$('#tweetForm').submit(function() {
+	event.preventDefault(); // prevent default redirections
+	var value = $("input#specTweet").val();
+	$.getJSON("tweets/" + value, function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+
+});
+$('#userTweetForm').submit(function() {
+	event.preventDefault(); // prevent default redirections
+	var value = $("input#specUserTweet").val();
+	$.getJSON("userTweets/" + value, function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+
+});
+$('#allLinks').click(function() {
+	$.getJSON("links/", function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+});
+$('#allTweets').click(function() {
+	$.getJSON("tweets/", function(json) {
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+});
+
+$('#allUsers').click(function() {
+	$.getJSON("users/", function(json) {
+		//console.log("JSON: " + JSON.stringify(json)); // DEBUG PRINT
+		var jsonPretty = JSON.stringify(JSON.parse(JSON.stringify(json)),null,2);
+		$('#outputBox').replaceWith('<div id="outputBox">' + jsonPretty + '</div>');
+	});
+});
+</script>
+</body>
+</html>

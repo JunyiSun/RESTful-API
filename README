@@ -1,0 +1,52 @@
+1. Implementation:
+    i) app.js : Server implementation to handle all REST API calls. REST API structure given below.
+    ii) index.html: Client code implementation which includes the jquery's ajax calls using getJson() within the <script></script> tags.
+        note: It fetches the latest jquery file using REST API to app.js as well
+
+2. Steps to start the server and client
+    Preparation: use terminal cd to the directory that contains all the files
+    First, start the server by typing in terminal/command prompt:
+        node app.js
+    Then, navigate to the homepage using a chrome browser.
+        HomePage: This is where you start access the front page.
+            http://127.0.0.1/3000
+            http://127.0.0.1/3000/
+            http://localhost/3000
+            http://localhost/3000/
+
+3. REST API Protocols:
+note: only GET, no POST, PUT, DELETE since only getting data but not creating/updating/deleting tweets
+
+a) Specification: Get all tweets available in archive:
+    http://127.0.0.1/3000/tweets
+    usage: Click on "All Tweets" button
+
+b) Specification: Get all known Twitter users included in the archive (removing duplicates):
+    http://127.0.0.1/3000/users
+    usage: Click on "All Users" button
+
+c) Specification: Get a  list of all externals links included in tweets from the archive:
+    http://127.0.0.1/3000/links
+    usage: Click on "All Links" button
+
+d) Specification: Get the details about a given tweet (given the tweet's id):
+    http://127.0.0.1/3000/tweets/:tweetID
+    e.g.
+        http://127.0.0.1/3000/tweets/311975360667459585
+    usage: Click on "Get tweet by tweetId" button after inputting the tweet's id into the corresponding text field.
+
+e) Specification: Get detailed profile information about a given Twitter user(given the user's screen_name):
+    http://127.0.0.1/3000/users/:screen_name
+    e.g. (screen_name = timoreilly)
+        http://127.0.0.1/3000/users/timoreilly
+    usage: Click on "Get user by ScreenName" button after inputting user's screen name into the corresponding text field.
+
+f) Specification: At least one request to showcase your ability to extract interesting information from the archive:
+   Get all tweets for a given Twitter user (given user's screen_name):
+        http://127.0.0.1/3000/userTweets/:screen_name
+        e.g. (screen_name = timoreilly)
+        http://127.0.0.1/3000/userTweets/timoreilly
+    usage: Click on "Get User's Tweets by ScreenName" button after inputting user's screen name into the corresponding text field.
+
+3. Example Inputs:
+    The example of how to type in the inputs into the text area is shown in image 'ExampleInput.png' as included.
